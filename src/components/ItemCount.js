@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
-import { CartContext } from '../context/CartContext';
-import { useContext } from 'react';
+
 import {  Button, ButtonGroup } from 'react-bootstrap';
 function ItemCount() {
 

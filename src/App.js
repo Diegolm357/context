@@ -1,18 +1,21 @@
 import React from 'react';
 import Navbars from './components/Navbars';
-import CustomProvider from './context/CartContext';
 import Inicio from './components/Inicio';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ItemListBlanco from './components/ItemListBlanco';
 import ItemList from './components/ItemList';
 import ItemListEspumante from './components/ItemListEspumante';
+import Carrito from './components/Carrito';
+import UserContext from './context/UserContext';
+import { useState } from 'react';
+
 function App() {
-  
+  const [carrito, setCarrito] = useState([]);
  
   return (
     <>
       <Router>
-        <CustomProvider>
+        <UserContext.Provider value={{ carrito, setCarrito }}>
       <header>
      <Navbars/>
           <Switch>
@@ -20,15 +23,15 @@ function App() {
             <Route path='/ItemListBlanco' component={ItemListBlanco} />
             <Route path='/ItemList' component={ItemList} />
             <Route path='/ItemListEspumante' component={ItemListEspumante} />
-
+            <Route path='/Carrito' component={Carrito } />
 </Switch>
          
           </header> 
-                       
-          </CustomProvider>
-     
+                     
+          </UserContext.Provider>
+         
        </Router>
-     
+        
     </>
   );
 }
